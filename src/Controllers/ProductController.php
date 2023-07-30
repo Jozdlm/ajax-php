@@ -1,4 +1,15 @@
 <?php
+
+class ProductController
+{
+	public function index()
+	{
+		response()->json([
+			"message" => "Hello from ProductController"
+		]);
+	}
+}
+
 ob_start();
 if (strlen(session_id()) < 1) {
 	session_start(); //Validamos si existe o no la sesión

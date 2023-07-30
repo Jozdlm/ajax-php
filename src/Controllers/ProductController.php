@@ -2,7 +2,7 @@
 
 class ProductController
 {
-	public function index()
+	public function index(): void
 	{
 		$products = db()->select('products')->all();
 
@@ -69,45 +69,6 @@ if (!isset($_SESSION["nombre"])) {
 			case 'activar':
 				$rspta = $articulo->activar($idarticulo);
 				echo $rspta ? "Artículo activado" : "Artículo no se puede activar";
-				break;
-
-			case 'mostrar':
-				$rspta = $articulo->mostrar($idarticulo);
-				//Codificar el resultado utilizando json
-				echo json_encode($rspta);
-				break;
-
-			case 'listar':
-				$rspta = $articulo->listar();
-				//Vamos a declarar un array
-				$data = array();
-
-				while ($reg = $rspta->fetch_object()) {
-					$data[] = array(
-						"0" => ($reg->condicion) ? '<button class="btn btn-warning" onclick="mostrar(' . $reg->idarticulo . ')"><i class="fa fa-pencil"></i></button>' .
-						' <button class="btn btn-danger" onclick="desactivar(' . $reg->idarticulo . ')"><i class="fa fa-close"></i></button>' :
-						'<button class="btn btn-warning" onclick="mostrar(' . $reg->idarticulo . ')"><i class="fa fa-pencil"></i></button>' .
-						' <button class="btn btn-primary" onclick="activar(' . $reg->idarticulo . ')"><i class="fa fa-check"></i></button>',
-						"1" => $reg->nombre,
-						"2" => $reg->categoria,
-						"3" => $reg->codigo,
-						"4" => $reg->stock,
-						"5" => "<img src='../files/articulos/" . $reg->imagen . "' height='50px' width='50px' >",
-						"6" => ($reg->condicion) ? '<span class="label bg-green">Activado</span>' :
-						'<span class="label bg-red">Desactivado</span>'
-					);
-				}
-				$results = array(
-					"sEcho" => 1,
-					//Información para el datatables
-					"iTotalRecords" => count($data),
-					//enviamos el total registros al datatable
-					"iTotalDisplayRecords" => count($data),
-					//enviamos el total registros a visualizar
-					"aaData" => $data
-				);
-				echo json_encode($results);
-
 				break;
 
 			case "selectCategoria":

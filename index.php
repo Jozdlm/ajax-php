@@ -1,11 +1,16 @@
 <?php 
 require __DIR__ . '/vendor/autoload.php';
 
+db()->connect('localhost', 'dbsistema_cv', 'root', 'devroot', 'mysql');
+
 app()->cors();
 
 app()->get('/', function () {
+  $products = db()->query('SELECT * FROM products')->all();
+
   response()->json([
-    'message' => 'Hello World!'
+    'data' => $products,
+    'count' => count($products)
   ]);
 });
 

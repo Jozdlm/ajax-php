@@ -11,6 +11,12 @@ class ProductController
 			"count" => count($products)
 		]);
 	}
+
+	public function show(int $id): void
+	{
+		$product = db()->select('products')->where('id', $id)->first();
+		response()->json($product);
+	}
 }
 
 ob_start();

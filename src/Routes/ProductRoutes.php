@@ -2,6 +2,6 @@
 
 require dirname(__DIR__) . '/Controllers/ProductController.php';
 
-app()->group('/products', function() {
+app()->group('api/products', function() {
     app()->get('/', "ProductController@index");
 });

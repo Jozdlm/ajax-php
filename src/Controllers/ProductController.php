@@ -4,8 +4,11 @@ class ProductController
 {
 	public function index()
 	{
+		$products = db()->select('products')->all();
+
 		response()->json([
-			"message" => "Hello from ProductController"
+			"data" => $products,
+			"count" => count($products)
 		]);
 	}
 }

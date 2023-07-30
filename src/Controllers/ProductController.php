@@ -17,6 +17,19 @@ class ProductController
 		$product = db()->select('products')->where('id', $id)->first();
 		response()->json($product);
 	}
+
+	public function enable(int $id): void
+	{
+		db()
+			->update("products")
+			->params(["isActive" => 1])
+			->where("id", $id)
+			->execute();
+
+		response()->json([
+			"message" => "Producto Activado Correctamente"
+		]);
+	}
 }
 
 ob_start();

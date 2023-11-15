@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP & AJAX</title>
+</head>
+
+<body>
+    <h1>PHP & AJAX</h1>
+
+    <main>
+        <section>
+            <form action="/api/categories.php" method="post">
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name">
+
+                <label for="description">Descripción</label>
+                <input type="text" name="description" id="description">
+
+                <input type="submit" value="Crear">
+            </form>
+        </section>
+        <section>
+            <table>
+                <caption>
+                    Categorías
+                </caption>
+                <thead>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                </thead>
+                <tbody>
+                    <td>1</td>
+                    <td>Ciencia Ficción</td>
+                    <td>Descripción de la categoría</td>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+
+</html>

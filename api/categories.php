@@ -1,6 +1,8 @@
 <?php
 $projectRoot = $_SERVER['DOCUMENT_ROOT'];
 require_once("{$projectRoot}/src/CategoryController.php");
+header("Content-Type: application/json");
+header("Accept: application/json");
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $id = $_REQUEST['id'] ?? null;

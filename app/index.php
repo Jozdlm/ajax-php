@@ -4,7 +4,7 @@ ob_start();
 session_start();
 
 if (!isset($_SESSION["nombre"])) {
-    header("Location: login.html");
+    header("Location: vistas/login.html");
 } else {
     require_once $_SERVER['DOCUMENT_ROOT'] . '/vistas/header.php';
 

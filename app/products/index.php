@@ -6,7 +6,7 @@ session_start();
 if (!isset($_SESSION["nombre"])) {
   header("Location: vistas/login.html");
 } else {
-  require 'header.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/header.php';
   if ($_SESSION['almacen'] == 1) {
     ?>
     <!--Contenido-->
@@ -108,12 +108,12 @@ if (!isset($_SESSION["nombre"])) {
     <!--Fin-Contenido-->
     <?php
   } else {
-    require 'noacceso.php';
+     require $_SERVER['DOCUMENT_ROOT'] . '/vistas/noacceso.php';
   }
-  require 'footer.php';
+   require $_SERVER['DOCUMENT_ROOT'] . '/vistas/footer.php';
   ?>
-  <script type="text/javascript" src="../public/js/JsBarcode.all.min.js"></script>
-  <script type="text/javascript" src="../public/js/jquery.PrintArea.js"></script>
+  <script type="text/javascript" src="/public/js/JsBarcode.all.min.js"></script>
+  <script type="text/javascript" src="/public/js/jquery.PrintArea.js"></script>
   <script>
     var tabla;
 
@@ -127,7 +127,7 @@ if (!isset($_SESSION["nombre"])) {
       })
 
       //Cargamos los items al select categoria
-      $.post("../ajax/articulo.php?op=selectCategoria", function (r) {
+      $.post("/ajax/articulo.php?op=selectCategoria", function (r) {
         $("#idcategoria").html(r);
         $('#idcategoria').selectpicker('refresh');
 
@@ -187,7 +187,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '../ajax/articulo.php?op=listar',
+            url: '/ajax/articulo.php?op=listar',
             type: "get",
             dataType: "json",
             error: function (e) {
@@ -217,7 +217,7 @@ if (!isset($_SESSION["nombre"])) {
       var formData = new FormData($("#formulario")[0]);
 
       $.ajax({
-        url: "../ajax/articulo.php?op=guardaryeditar",
+        url: "/ajax/articulo.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -234,7 +234,7 @@ if (!isset($_SESSION["nombre"])) {
     }
 
     function mostrar(idarticulo) {
-      $.post("../ajax/articulo.php?op=mostrar", { idarticulo: idarticulo }, function (data, status) {
+      $.post("/ajax/articulo.php?op=mostrar", { idarticulo: idarticulo }, function (data, status) {
         data = JSON.parse(data);
         mostrarform(true);
 
@@ -257,7 +257,7 @@ if (!isset($_SESSION["nombre"])) {
     function desactivar(idarticulo) {
       bootbox.confirm("¿Está Seguro de desactivar el artículo?", function (result) {
         if (result) {
-          $.post("../ajax/articulo.php?op=desactivar", { idarticulo: idarticulo }, function (e) {
+          $.post("/ajax/articulo.php?op=desactivar", { idarticulo: idarticulo }, function (e) {
             bootbox.alert(e);
             tabla.ajax.reload();
           });
@@ -269,7 +269,7 @@ if (!isset($_SESSION["nombre"])) {
     function activar(idarticulo) {
       bootbox.confirm("¿Está Seguro de activar el Artículo?", function (result) {
         if (result) {
-          $.post("../ajax/articulo.php?op=activar", { idarticulo: idarticulo }, function (e) {
+          $.post("/ajax/articulo.php?op=activar", { idarticulo: idarticulo }, function (e) {
             bootbox.alert(e);
             tabla.ajax.reload();
           });

@@ -95,7 +95,7 @@ if (!isset($_SESSION["nombre"])) {
         $("#idcliente").html(r);
         $('#idcliente').selectpicker('refresh');
       });
-      $('#mConsultaV').addClass("treeview active");
+      $('#mConsultas').addClass("treeview active");
       $('#lConsulasV').addClass("active");
     }
 

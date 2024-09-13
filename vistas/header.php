@@ -169,27 +169,18 @@ if (strlen(session_id()) < 1)
           }
           ?>
 
-          <?php if ($_SESSION['consultac'] == 1): ?>
-            <li id="mConsultaC" class="treeview">
+          <?php if ($_SESSION['consultac'] == 1 && $_SESSION['consultav'] == 1): ?>
+            <li id="mConsultas" class="treeview">
               <a href="#">
-                <i class="fa fa-bar-chart"></i> <span>Consulta Compras</span>
+                <i class="fa fa-bar-chart"></i> <span>Reportes y Consultas</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li id="lConsulasC"><a href="app/comprasfecha.php"><i class="fa fa-circle-o"></i> Consulta Compras</a>
+                <li id="lConsulasC">
+                  <a href="app/comprasfecha.php"><i class="fa fa-circle-o"></i> Consulta Compras</a>
                 </li>
-              </ul>
-            </li>
-          <?php endif; ?>
-
-          <?php if ($_SESSION['consultav'] == 1): ?>
-            <li id="mConsultaV" class="treeview">
-              <a href="#">
-                <i class="fa fa-bar-chart"></i> <span>Consulta Ventas</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li id="lConsulasV"><a href="app/ventasfechacliente.php"><i class="fa fa-circle-o"></i> Consulta Ventas</a>
+                <li id="lConsulasV">
+                  <a href="app/ventasfechacliente.php"><i class="fa fa-circle-o"></i> Consulta Ventas</a>
                 </li>
               </ul>
             </li>

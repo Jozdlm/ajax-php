@@ -85,7 +85,7 @@ if (!isset($_SESSION["nombre"])) {
       listar();
       $("#fecha_inicio").change(listar);
       $("#fecha_fin").change(listar);
-      $('#mConsultaC').addClass("treeview active");
+      $('#mConsultas').addClass("treeview active");
       $('#lConsulasC').addClass("active");
     }
 

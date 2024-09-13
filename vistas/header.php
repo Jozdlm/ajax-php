@@ -11,23 +11,24 @@ if (strlen(session_id()) < 1)
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../public/css/font-awesome.css">
+    <link rel="stylesheet" href="/public/css/font-awesome.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../public/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/public/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="../public/css/_all-skins.min.css">
-    <link rel="apple-touch-icon" href="../public/img/apple-touch-icon.png">
-    <link rel="shortcut icon" href="../public/img/favicon.ico">
+    <link rel="stylesheet" href="/public/css/_all-skins.min.css">
+    <link rel="apple-touch-icon" href="/public/img/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/public/img/favicon.ico">
+    <base href="/">
 
     <!-- DATATABLES -->
-    <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">    
-    <link href="../public/datatables/buttons.dataTables.min.css" rel="stylesheet"/>
-    <link href="../public/datatables/responsive.dataTables.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/public/datatables/jquery.dataTables.min.css">    
+    <link href="/public/datatables/buttons.dataTables.min.css" rel="stylesheet"/>
+    <link href="/public/datatables/responsive.dataTables.min.css" rel="stylesheet"/>
 
-    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-select.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap-select.min.css">
 
   </head>
   <body class="hold-transition skin-blue-light sidebar-mini">
@@ -57,13 +58,13 @@ if (strlen(session_id()) < 1)
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="user-image" alt="User Image">
+                  <img src="/files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="user-image" alt="User Image">
                   <span class="hidden-xs"><?php echo $_SESSION['nombre']; ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="img-circle" alt="User Image">
+                    <img src="/files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="img-circle" alt="User Image">
                     <p>
                       www.incanatoit.com - Desarrollando Software
                       <small>www.youtube.com/jcarlosad7</small>
@@ -74,7 +75,7 @@ if (strlen(session_id()) < 1)
                   <li class="user-footer">
                     
                     <div class="pull-right">
-                      <a href="../ajax/usuario.php?op=salir" class="btn btn-default btn-flat">Cerrar</a>
+                      <a href="/ajax/usuario.php?op=salir" class="btn btn-default btn-flat">Cerrar</a>
                     </div>
                   </li>
                 </ul>
@@ -209,7 +210,7 @@ if (strlen(session_id()) < 1)
             </li>
             <li>
               <a href="acerca.php">
-                <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
+                <i class="fa fa-info-circle"></i> <span>Acerca De.</span>
                 <small class="label pull-right bg-yellow">IT</small>
               </a>
             </li>

@@ -1,3 +1,4 @@
-<?php
-
-header("Location:public/index.html");
+<?php 
+//redireccionar a la vista de login
+header ('Location: vistas/login.html');
+?>

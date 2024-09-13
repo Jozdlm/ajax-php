@@ -6,7 +6,7 @@ session_start();
 if (!isset($_SESSION["nombre"])) {
   header("Location: vistas/login.html");
 } else {
-  require 'header.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/header.php';
 
   if ($_SESSION['consultac'] == 1) {
     ?>
@@ -72,10 +72,10 @@ if (!isset($_SESSION["nombre"])) {
     <!--Fin-Contenido-->
     <?php
   } else {
-    require 'noacceso.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/vistas/noacceso.php';
   }
 
-  require 'footer.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/footer.php';
   ?>
   <script>
     var tabla;
@@ -109,7 +109,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '../ajax/consultas.php?op=comprasfecha',
+            url: '/ajax/consultas.php?op=comprasfecha',
             data: { fecha_inicio: fecha_inicio, fecha_fin: fecha_fin },
             type: "get",
             dataType: "json",
@@ -132,8 +132,6 @@ if (!isset($_SESSION["nombre"])) {
           "order": [[0, "desc"]]//Ordenar (columna,orden)
         }).DataTable();
     }
-
-
     init();
   </script>
   <?php

@@ -116,26 +116,6 @@ if (!isset($_SESSION["nombre"])) {
         }).DataTable();
     }
 
-    function mostrar(idarticulo) {
-      $.post("/ajax/articulo.php?op=mostrar", { idarticulo: idarticulo }, function (data, status) {
-        data = JSON.parse(data);
-        mostrarform(true);
-
-        $("#idcategoria").val(data.idcategoria);
-        $('#idcategoria').selectpicker('refresh');
-        $("#codigo").val(data.codigo);
-        $("#nombre").val(data.nombre);
-        $("#stock").val(data.stock);
-        $("#descripcion").val(data.descripcion);
-        $("#imagenmuestra").show();
-        $("#imagenmuestra").attr("src", "../files/articulos/" + data.imagen);
-        $("#imagenactual").val(data.imagen);
-        $("#idarticulo").val(data.idarticulo);
-        generarbarcode();
-
-      })
-    }
-
     //Función para desactivar registros
     function desactivar(idarticulo) {
       bootbox.confirm("¿Está Seguro de desactivar el artículo?", function (result) {

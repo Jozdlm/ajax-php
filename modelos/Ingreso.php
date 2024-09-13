@@ -1,6 +1,6 @@
 <?php 
 //Incluímos inicialmente la conexión a la base de datos
-require_once __DIR__ . "/../config/Conexion.php";
+require_once __DIR__ . "/Conexion.php";
 
 Class Ingreso
 {

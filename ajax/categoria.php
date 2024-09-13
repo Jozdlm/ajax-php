@@ -50,9 +50,9 @@ if (!isset($_SESSION["nombre"])) {
 
 				while ($reg = $rspta->fetch_object()) {
 					$data[] = array(
-						"0" => ($reg->condicion) ? '<button class="btn btn-warning" onclick="mostrar(' . $reg->idcategoria . ')"><i class="fa fa-pencil"></i></button>' .
+						"0" => ($reg->condicion) ? '<a class="btn btn-warning" href="app/categories/update-category.php?id=' . $reg->idcategoria . '"><i class="fa fa-pencil"></i></a>' .
 							' <button class="btn btn-danger" onclick="desactivar(' . $reg->idcategoria . ')"><i class="fa fa-close"></i></button>' :
-							'<button class="btn btn-warning" onclick="mostrar(' . $reg->idcategoria . ')"><i class="fa fa-pencil"></i></button>' .
+							'<a class="btn btn-warning" href="app/categories/update-category.php?id=' . $reg->idcategoria . '"><i class="fa fa-pencil"></i></a>' .
 							' <button class="btn btn-primary" onclick="activar(' . $reg->idcategoria . ')"><i class="fa fa-check"></i></button>',
 						"1" => $reg->nombre,
 						"2" => $reg->descripcion,

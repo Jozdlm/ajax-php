@@ -6,7 +6,7 @@ session_start();
 if (!isset($_SESSION["nombre"])) {
   header("Location: vistas/login.html");
 } else {
-  require 'header.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/header.php';
   if ($_SESSION['acceso'] == 1) {
     ?>
     <!--Contenido-->
@@ -18,10 +18,7 @@ if (!isset($_SESSION["nombre"])) {
           <div class="col-md-12">
             <div class="box">
               <div class="box-header with-border">
-                <h1 class="box-title">Permiso <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i
-                      class="fa fa-plus-circle"></i> Agregar</button></h1>
-                <div class="box-tools pull-right">
-                </div>
+                <h1 class="box-title">Permiso</h1>
               </div>
               <!-- /.box-header -->
               <!-- centro -->
@@ -48,37 +45,19 @@ if (!isset($_SESSION["nombre"])) {
     <!--Fin-Contenido-->
     <?php
   } else {
-    require 'noacceso.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/vistas/noacceso.php';
   }
-  require 'footer.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/footer.php';
   ?>
   <script>
     var tabla;
 
     //Función que se ejecuta al inicio
     function init() {
-      mostrarform(false);
       listar();
       $('#mAcceso').addClass("treeview active");
       $('#lPermisos').addClass("active");
     }
-
-    //Función mostrar formulario
-    function mostrarform(flag) {
-      //limpiar();
-      if (flag) {
-        $("#listadoregistros").hide();
-        $("#formularioregistros").show();
-        $("#btnGuardar").prop("disabled", false);
-        $("#btnagregar").hide();
-      }
-      else {
-        $("#listadoregistros").show();
-        $("#formularioregistros").hide();
-        $("#btnagregar").hide();
-      }
-    }
-
 
     //Función Listar
     function listar() {
@@ -96,7 +75,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '../ajax/permiso.php?op=listar',
+            url: '/ajax/permiso.php?op=listar',
             type: "get",
             dataType: "json",
             error: function (e) {
@@ -114,11 +93,10 @@ if (!isset($_SESSION["nombre"])) {
             }
           },
           "bDestroy": true,
-          "iDisplayLength": 5,//Paginación
+          "iDisplayLength": 10,//Paginación
           "order": [[0, "desc"]]//Ordenar (columna,orden)
         }).DataTable();
     }
-
 
     init();
   </script>

@@ -165,7 +165,7 @@ if (strlen(session_id()) < 1)
               </a>
               <ul class="treeview-menu">
                 <li id="lUsuarios"><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                <li id="lPermisos"><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
+                <li id="lPermisos"><a href="app/permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
                 
               </ul>
             </li>';

@@ -203,13 +203,13 @@ if (strlen(session_id()) < 1)
             ?>
 
             <li>
-              <a href="ayuda.php">
+              <a href="app/ayuda.php">
                 <i class="fa fa-plus-square"></i> <span>Ayuda</span>
                 <small class="label pull-right bg-red">PDF</small>
               </a>
             </li>
             <li>
-              <a href="acerca.php">
+              <a href="app/acerca.php">
                 <i class="fa fa-info-circle"></i> <span>Acerca De.</span>
                 <small class="label pull-right bg-yellow">IT</small>
               </a>

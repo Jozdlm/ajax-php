@@ -6,7 +6,7 @@ session_start();
 if (!isset($_SESSION["nombre"])) {
   header("Location: vistas/login.html");
 } else {
-  require 'header.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/header.php';
 
   if ($_SESSION['consultav'] == 1) {
     ?>
@@ -79,10 +79,10 @@ if (!isset($_SESSION["nombre"])) {
     <!--Fin-Contenido-->
     <?php
   } else {
-    require 'noacceso.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/vistas/noacceso.php';
   }
 
-  require 'footer.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/footer.php';
   ?>
   <script>
     var tabla;
@@ -91,7 +91,7 @@ if (!isset($_SESSION["nombre"])) {
     function init() {
       listar();
       //Cargamos los items al select cliente
-      $.post("../ajax/venta.php?op=selectCliente", function (r) {
+      $.post("/ajax/venta.php?op=selectCliente", function (r) {
         $("#idcliente").html(r);
         $('#idcliente').selectpicker('refresh');
       });
@@ -120,7 +120,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '../ajax/consultas.php?op=ventasfechacliente',
+            url: '/ajax/consultas.php?op=ventasfechacliente',
             data: { fecha_inicio: fecha_inicio, fecha_fin: fecha_fin, idcliente: idcliente },
             type: "get",
             dataType: "json",
@@ -147,7 +147,7 @@ if (!isset($_SESSION["nombre"])) {
 
     init();
   </script>
-<?php
+  <?php
 }
 ob_end_flush();
 ?>

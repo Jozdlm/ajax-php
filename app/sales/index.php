@@ -6,9 +6,9 @@ session_start();
 if (!isset($_SESSION["nombre"])) {
   header("Location: vistas/login.html");
 } else {
-  require 'header.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/header.php';
 
-  if ($_SESSION['compras'] == 1) {
+  if ($_SESSION['ventas'] == 1) {
     ?>
     <!--Contenido-->
     <!-- Content Wrapper. Contains page content -->
@@ -19,8 +19,8 @@ if (!isset($_SESSION["nombre"])) {
           <div class="col-md-12">
             <div class="box">
               <div class="box-header with-border">
-                <h1 class="box-title">Ingreso <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i
-                      class="fa fa-plus-circle"></i> Agregar</button> <a href="/app/reportes//rptingresos.php"
+                <h1 class="box-title">Venta <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i
+                      class="fa fa-plus-circle"></i> Agregar</button> <a href="/app/reportes//rptventas.php"
                     target="_blank"><button class="btn btn-info"><i class="fa fa-clipboard"></i> Reporte</button></a></h1>
                 <div class="box-tools pull-right">
                 </div>
@@ -32,11 +32,11 @@ if (!isset($_SESSION["nombre"])) {
                   <thead>
                     <th>Opciones</th>
                     <th>Fecha</th>
-                    <th>Proveedor</th>
+                    <th>Cliente</th>
                     <th>Usuario</th>
                     <th>Documento</th>
                     <th>Número</th>
-                    <th>Total Compra</th>
+                    <th>Total Venta</th>
                     <th>Estado</th>
                   </thead>
                   <tbody>
@@ -48,7 +48,7 @@ if (!isset($_SESSION["nombre"])) {
                     <th>Usuario</th>
                     <th>Documento</th>
                     <th>Número</th>
-                    <th>Total Compra</th>
+                    <th>Total Venta</th>
                     <th>Estado</th>
                   </tfoot>
                 </table>
@@ -56,9 +56,9 @@ if (!isset($_SESSION["nombre"])) {
               <div class="panel-body" style="height: 100%;" id="formularioregistros">
                 <form name="formulario" id="formulario" method="POST">
                   <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                    <label>Proveedor(*):</label>
-                    <input type="hidden" name="idingreso" id="idingreso">
-                    <select id="idproveedor" name="idproveedor" class="form-control selectpicker" data-live-search="true"
+                    <label>Cliente(*):</label>
+                    <input type="hidden" name="idventa" id="idventa">
+                    <select id="idcliente" name="idcliente" class="form-control selectpicker" data-live-search="true"
                       required>
 
                     </select>
@@ -102,8 +102,8 @@ if (!isset($_SESSION["nombre"])) {
                         <th>Opciones</th>
                         <th>Artículo</th>
                         <th>Cantidad</th>
-                        <th>Precio Compra</th>
                         <th>Precio Venta</th>
+                        <th>Descuento</th>
                         <th>Subtotal</th>
                       </thead>
                       <tfoot>
@@ -113,7 +113,7 @@ if (!isset($_SESSION["nombre"])) {
                         <th></th>
                         <th></th>
                         <th>
-                          <h4 id="total">S/. 0.00</h4><input type="hidden" name="total_compra" id="total_compra">
+                          <h4 id="total">S/. 0.00</h4><input type="hidden" name="total_venta" id="total_venta">
                         </th>
                       </tfoot>
                       <tbody>
@@ -142,7 +142,7 @@ if (!isset($_SESSION["nombre"])) {
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog" style="width: 65% !important;">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -156,6 +156,7 @@ if (!isset($_SESSION["nombre"])) {
                 <th>Categoría</th>
                 <th>Código</th>
                 <th>Stock</th>
+                <th>Precio Venta</th>
                 <th>Imagen</th>
               </thead>
               <tbody>
@@ -167,6 +168,7 @@ if (!isset($_SESSION["nombre"])) {
                 <th>Categoría</th>
                 <th>Código</th>
                 <th>Stock</th>
+                <th>Precio Venta</th>
                 <th>Imagen</th>
               </tfoot>
             </table>
@@ -180,10 +182,10 @@ if (!isset($_SESSION["nombre"])) {
     <!-- Fin modal -->
     <?php
   } else {
-    require 'noacceso.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/vistas/noacceso.php';
   }
 
-  require 'footer.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/footer.php';
   ?>
   <script>
     var tabla;
@@ -196,24 +198,24 @@ if (!isset($_SESSION["nombre"])) {
       $("#formulario").on("submit", function (e) {
         guardaryeditar(e);
       });
-      //Cargamos los items al select proveedor
-      $.post("../ajax/ingreso.php?op=selectProveedor", function (r) {
-        $("#idproveedor").html(r);
-        $('#idproveedor').selectpicker('refresh');
+      //Cargamos los items al select cliente
+      $.post("../ajax/venta.php?op=selectCliente", function (r) {
+        $("#idcliente").html(r);
+        $('#idcliente').selectpicker('refresh');
       });
-      $('#mCompras').addClass("treeview active");
-      $('#lIngresos').addClass("active");
+      $('#mVentas').addClass("treeview active");
+      $('#lVentas').addClass("active");
     }
 
     //Función limpiar
     function limpiar() {
-      $("#idproveedor").val("");
-      $("#proveedor").val("");
+      $("#idcliente").val("");
+      $("#cliente").val("");
       $("#serie_comprobante").val("");
       $("#num_comprobante").val("");
       $("#impuesto").val("0");
 
-      $("#total_compra").val("");
+      $("#total_venta").val("");
       $(".filas").remove();
       $("#total").html("0");
 
@@ -241,15 +243,14 @@ if (!isset($_SESSION["nombre"])) {
 
         $("#btnGuardar").hide();
         $("#btnCancelar").show();
-        detalles = 0;
         $("#btnAgregarArt").show();
+        detalles = 0;
       }
       else {
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
         $("#btnagregar").show();
       }
-
     }
 
     //Función cancelarform
@@ -274,7 +275,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '../ajax/ingreso.php?op=listar',
+            url: '../ajax/venta.php?op=listar',
             type: "get",
             dataType: "json",
             error: function (e) {
@@ -310,7 +311,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '../ajax/ingreso.php?op=listarArticulos',
+            url: '../ajax/venta.php?op=listarArticulosVenta',
             type: "get",
             dataType: "json",
             error: function (e) {
@@ -330,7 +331,7 @@ if (!isset($_SESSION["nombre"])) {
       var formData = new FormData($("#formulario")[0]);
 
       $.ajax({
-        url: "../ajax/ingreso.php?op=guardaryeditar",
+        url: "../ajax/venta.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -346,20 +347,20 @@ if (!isset($_SESSION["nombre"])) {
       limpiar();
     }
 
-    function mostrar(idingreso) {
-      $.post("../ajax/ingreso.php?op=mostrar", { idingreso: idingreso }, function (data, status) {
+    function mostrar(idventa) {
+      $.post("../ajax/venta.php?op=mostrar", { idventa: idventa }, function (data, status) {
         data = JSON.parse(data);
         mostrarform(true);
 
-        $("#idproveedor").val(data.idproveedor);
-        $("#idproveedor").selectpicker('refresh');
+        $("#idcliente").val(data.idcliente);
+        $("#idcliente").selectpicker('refresh');
         $("#tipo_comprobante").val(data.tipo_comprobante);
         $("#tipo_comprobante").selectpicker('refresh');
         $("#serie_comprobante").val(data.serie_comprobante);
         $("#num_comprobante").val(data.num_comprobante);
         $("#fecha_hora").val(data.fecha);
         $("#impuesto").val(data.impuesto);
-        $("#idingreso").val(data.idingreso);
+        $("#idventa").val(data.idventa);
 
         //Ocultar y mostrar los botones
         $("#btnGuardar").hide();
@@ -367,16 +368,16 @@ if (!isset($_SESSION["nombre"])) {
         $("#btnAgregarArt").hide();
       });
 
-      $.post("../ajax/ingreso.php?op=listarDetalle&id=" + idingreso, function (r) {
+      $.post("../ajax/venta.php?op=listarDetalle&id=" + idventa, function (r) {
         $("#detalles").html(r);
       });
     }
 
     //Función para anular registros
-    function anular(idingreso) {
-      bootbox.confirm("¿Está Seguro de anular el ingreso?", function (result) {
+    function anular(idventa) {
+      bootbox.confirm("¿Está Seguro de anular la venta?", function (result) {
         if (result) {
-          $.post("../ajax/ingreso.php?op=anular", { idingreso: idingreso }, function (e) {
+          $.post("../ajax/venta.php?op=anular", { idventa: idventa }, function (e) {
             bootbox.alert(e);
             tabla.ajax.reload();
           });
@@ -403,19 +404,18 @@ if (!isset($_SESSION["nombre"])) {
       }
     }
 
-    function agregarDetalle(idarticulo, articulo) {
+    function agregarDetalle(idarticulo, articulo, precio_venta) {
       var cantidad = 1;
-      var precio_compra = 1;
-      var precio_venta = 1;
+      var descuento = 0;
 
       if (idarticulo != "") {
-        var subtotal = cantidad * precio_compra;
+        var subtotal = cantidad * precio_venta;
         var fila = '<tr class="filas" id="fila' + cont + '">' +
           '<td><button type="button" class="btn btn-danger" onclick="eliminarDetalle(' + cont + ')">X</button></td>' +
           '<td><input type="hidden" name="idarticulo[]" value="' + idarticulo + '">' + articulo + '</td>' +
           '<td><input type="number" name="cantidad[]" id="cantidad[]" value="' + cantidad + '"></td>' +
-          '<td><input type="number" name="precio_compra[]" id="precio_compra[]" value="' + precio_compra + '"></td>' +
-          '<td><input type="number" name="precio_venta[]" value="' + precio_venta + '"></td>' +
+          '<td><input type="number" name="precio_venta[]" id="precio_venta[]" value="' + precio_venta + '"></td>' +
+          '<td><input type="number" name="descuento[]" value="' + descuento + '"></td>' +
           '<td><span name="subtotal" id="subtotal' + cont + '">' + subtotal + '</span></td>' +
           '<td><button type="button" onclick="modificarSubototales()" class="btn btn-info"><i class="fa fa-refresh"></i></button></td>' +
           '</tr>';
@@ -431,15 +431,17 @@ if (!isset($_SESSION["nombre"])) {
 
     function modificarSubototales() {
       var cant = document.getElementsByName("cantidad[]");
-      var prec = document.getElementsByName("precio_compra[]");
+      var prec = document.getElementsByName("precio_venta[]");
+      var desc = document.getElementsByName("descuento[]");
       var sub = document.getElementsByName("subtotal");
 
       for (var i = 0; i < cant.length; i++) {
         var inpC = cant[i];
         var inpP = prec[i];
+        var inpD = desc[i];
         var inpS = sub[i];
 
-        inpS.value = inpC.value * inpP.value;
+        inpS.value = (inpC.value * inpP.value) - inpD.value;
         document.getElementsByName("subtotal")[i].innerHTML = inpS.value;
       }
       calcularTotales();
@@ -453,7 +455,7 @@ if (!isset($_SESSION["nombre"])) {
         total += document.getElementsByName("subtotal")[i].value;
       }
       $("#total").html("S/. " + total);
-      $("#total_compra").val(total);
+      $("#total_venta").val(total);
       evaluar();
     }
 
@@ -471,7 +473,7 @@ if (!isset($_SESSION["nombre"])) {
       $("#fila" + indice).remove();
       calcularTotales();
       detalles = detalles - 1;
-      evaluar();
+      evaluar()
     }
 
     init();

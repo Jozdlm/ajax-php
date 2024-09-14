@@ -6,7 +6,7 @@ session_start();
 if (!isset($_SESSION["nombre"])) {
   header("Location: vistas/login.html");
 } else {
-  require 'header.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/header.php';
   if ($_SESSION['ventas'] == 1) {
     ?>
     <!--Contenido-->
@@ -104,9 +104,9 @@ if (!isset($_SESSION["nombre"])) {
     <!--Fin-Contenido-->
     <?php
   } else {
-    require 'noacceso.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/vistas/noacceso.php';
   }
-  require 'footer.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/footer.php';
   ?>
   <script>
     var tabla;

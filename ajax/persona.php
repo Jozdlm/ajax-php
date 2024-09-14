@@ -104,7 +104,7 @@ switch ($_GET["op"]){
 }
 else
 {
-  require 'noacceso.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/noacceso.php';
 }
 }
 ob_end_flush();

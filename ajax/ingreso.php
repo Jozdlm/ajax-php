@@ -13,7 +13,7 @@ else
 if ($_SESSION['compras']==1)
 {
 
-require_once __DIR__ . "/../modelos/Ingreso.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Ingreso.php";
 
 $ingreso=new Ingreso();
 
@@ -109,7 +109,7 @@ switch ($_GET["op"]){
 	break;
 
 	case 'selectProveedor':
-		require_once __DIR__ . "/../modelos/Persona.php";
+		require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Persona.php";
 		$persona = new Persona();
 
 		$rspta = $persona->listarP();
@@ -121,7 +121,7 @@ switch ($_GET["op"]){
 	break;
 
 	case 'listarArticulos':
-		require_once __DIR__ . "/../modelos/Articulo.php";
+		require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Articulo.php";
 		$articulo=new Articulo();
 
 		$rspta=$articulo->listarActivos();

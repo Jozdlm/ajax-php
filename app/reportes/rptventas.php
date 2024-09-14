@@ -44,7 +44,7 @@ $pdf->Cell(20,6,'Total',1,0,'C',1);
  
 $pdf->Ln(10);
 //Comenzamos a crear las filas de los registros según la consulta mysql
-require_once __DIR__ . "/../modelos/Venta.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Venta.php";
 $venta = new Venta();
 
 $rspta = $venta->listar();

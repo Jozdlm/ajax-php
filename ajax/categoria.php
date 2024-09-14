@@ -8,7 +8,7 @@ if (!isset($_SESSION["nombre"])) {
 } else {
 	//Validamos el acceso solo al usuario logueado y autorizado.
 	if ($_SESSION['almacen'] == 1) {
-		require_once __DIR__ . "/../modelos/Categoria.php";
+		require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Categoria.php";
 
 		$categoria = new Categoria();
 

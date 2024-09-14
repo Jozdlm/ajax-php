@@ -12,7 +12,7 @@ else
 //Validamos el acceso solo al usuario logueado y autorizado.
 if ($_SESSION['ventas']==1)
 {
-require_once __DIR__ . "/../modelos/Venta.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Venta.php";
 
 $venta=new Venta();
 
@@ -115,7 +115,7 @@ switch ($_GET["op"]){
 	break;
 
 	case 'selectCliente':
-		require_once __DIR__ . "/../modelos/Persona.php";
+		require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Persona.php";
 		$persona = new Persona();
 
 		$rspta = $persona->listarC();
@@ -127,7 +127,7 @@ switch ($_GET["op"]){
 	break;
 
 	case 'listarArticulosVenta':
-		require_once __DIR__ . "/../modelos/Articulo.php";
+		require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Articulo.php";
 		$articulo=new Articulo();
 
 		$rspta=$articulo->listarActivosVenta();

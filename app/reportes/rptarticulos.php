@@ -43,7 +43,7 @@ $pdf->Cell(35,6,utf8_decode('Descripción'),1,0,'C',1);
  
 $pdf->Ln(10);
 //Comenzamos a crear las filas de los registros según la consulta mysql
-require_once __DIR__ . "/../modelos/Articulo.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Articulo.php";
 $articulo = new Articulo();
 
 $rspta = $articulo->listar();

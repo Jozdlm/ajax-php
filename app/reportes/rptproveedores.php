@@ -43,7 +43,7 @@ $pdf->Cell(40,6,'Email',1,0,'C',1);
  
 $pdf->Ln(10);
 //Comenzamos a crear las filas de los registros según la consulta mysql
-require_once __DIR__ . "/../modelos/Persona.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Persona.php";
 $persona = new Persona();
 
 $rspta = $persona->listarp();

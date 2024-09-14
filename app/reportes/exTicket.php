@@ -22,7 +22,7 @@ if ($_SESSION['ventas']==1)
 <?php
 
 //Incluímos la clase Venta
-require_once __DIR__ . "/../modelos/Venta.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Venta.php";
 //Instanaciamos a la clase con el objeto venta
 $venta = new Venta();
 //En el objeto $rspta Obtenemos los valores devueltos del método ventacabecera del modelo

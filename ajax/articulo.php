@@ -8,7 +8,7 @@ if (!isset($_SESSION["nombre"])) {
 } else {
 	//Validamos el acceso solo al usuario logueado y autorizado.
 	if ($_SESSION['almacen'] == 1) {
-		require_once __DIR__ . "/../modelos/Articulo.php";
+		require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Articulo.php";
 
 		$articulo = new Articulo();
 
@@ -88,7 +88,7 @@ if (!isset($_SESSION["nombre"])) {
 				break;
 
 			case "selectCategoria":
-				require_once __DIR__ . "/../modelos/Categoria.php";
+				require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Categoria.php";
 				$categoria = new Categoria();
 
 				$rspta = $categoria->select();

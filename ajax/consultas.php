@@ -12,7 +12,7 @@ else
 //Validamos el acceso solo al usuario logueado y autorizado.
 if ($_SESSION['consultac']==1 || $_SESSION['consultav']==1)
 {
-require_once __DIR__ . "/../modelos/Consultas.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Consultas.php";
 
 $consulta=new Consultas();
 

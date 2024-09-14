@@ -25,7 +25,7 @@ $telefono = "931742904";
 $email = "jcarlos.ad7@gmail.com";
 
 //Obtenemos los datos de la cabecera de la venta actual
-require_once __DIR__ . "/../modelos/Ingreso.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Ingreso.php";
 $ingreso= new Ingreso();
 $rsptav = $ingreso->ingresocabecera($_GET["id"]);
 //Recorremos todos los valores obtenidos

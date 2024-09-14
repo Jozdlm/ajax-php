@@ -44,7 +44,7 @@ $pdf->Cell(32,6,utf8_decode('Login'),1,0,'C',1);
  
 $pdf->Ln(10);
 //Comenzamos a crear las filas de los registros según la consulta mysql
-require_once __DIR__ . "/../modelos/Usuario.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Usuario.php";
 $usuario = new Usuario();
 
 $rspta = $usuario->listar();

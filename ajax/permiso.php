@@ -12,7 +12,7 @@ else
 //Validamos el acceso solo al usuario logueado y autorizado.
 if ($_SESSION['acceso']==1)
 { 
-require_once __DIR__ . "/../modelos/Permiso.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Permiso.php";
 
 $permiso=new Permiso();
 

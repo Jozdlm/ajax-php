@@ -3,7 +3,7 @@ ob_start();
 if (strlen(session_id()) < 1){
 	session_start();//Validamos si existe o no la sesión
 }
-require_once __DIR__ . "/../modelos/Usuario.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Usuario.php";
 
 $usuario=new Usuario();
 
@@ -175,7 +175,7 @@ switch ($_GET["op"]){
 
 	case 'permisos':
 		//Obtenemos todos los permisos de la tabla permisos
-		require_once __DIR__ . "/../modelos/Permiso.php";
+		require_once $_SERVER["DOCUMENT_ROOT"] . "/api/modelos/Permiso.php";
 		$permiso = new Permiso();
 		$rspta = $permiso->listar();
 

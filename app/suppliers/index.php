@@ -6,7 +6,7 @@ session_start();
 if (!isset($_SESSION["nombre"])) {
   header("Location: vistas/login.html");
 } else {
-  require 'header.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/header.php';
   if ($_SESSION['compras'] == 1) {
     ?>
     <!--Contenido-->
@@ -105,9 +105,9 @@ if (!isset($_SESSION["nombre"])) {
     <!--Fin-Contenido-->
     <?php
   } else {
-    require 'noacceso.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/vistas/noacceso.php';
   }
-  require 'footer.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/footer.php';
   ?>
   <script>
     var tabla;
@@ -172,7 +172,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '../ajax/persona.php?op=listarp',
+            url: '/ajax/persona.php?op=listarp',
             type: "get",
             dataType: "json",
             error: function (e) {
@@ -202,7 +202,7 @@ if (!isset($_SESSION["nombre"])) {
       var formData = new FormData($("#formulario")[0]);
 
       $.ajax({
-        url: "../ajax/persona.php?op=guardaryeditar",
+        url: "/ajax/persona.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -219,7 +219,7 @@ if (!isset($_SESSION["nombre"])) {
     }
 
     function mostrar(idpersona) {
-      $.post("../ajax/persona.php?op=mostrar", { idpersona: idpersona }, function (data, status) {
+      $.post("/ajax/persona.php?op=mostrar", { idpersona: idpersona }, function (data, status) {
         data = JSON.parse(data);
         mostrarform(true);
 
@@ -240,7 +240,7 @@ if (!isset($_SESSION["nombre"])) {
     function eliminar(idpersona) {
       bootbox.confirm("¿Está Seguro de eliminar el proveedor?", function (result) {
         if (result) {
-          $.post("../ajax/persona.php?op=eliminar", { idpersona: idpersona }, function (e) {
+          $.post("/ajax/persona.php?op=eliminar", { idpersona: idpersona }, function (e) {
             bootbox.alert(e);
             tabla.ajax.reload();
           });

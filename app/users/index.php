@@ -154,7 +154,7 @@ if (!isset($_SESSION["nombre"])) {
 
       $("#imagenmuestra").hide();
       //Mostramos los permisos
-      $.post("../ajax/usuario.php?op=permisos&id=", function (r) {
+      $.post("/api/usuario.php?op=permisos&id=", function (r) {
         $("#permisos").html(r);
       });
       $('#mAcceso').addClass("treeview active");
@@ -214,7 +214,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '../ajax/usuario.php?op=listar',
+            url: '/api/usuario.php?op=listar',
             type: "get",
             dataType: "json",
             error: function (e) {
@@ -244,7 +244,7 @@ if (!isset($_SESSION["nombre"])) {
       var formData = new FormData($("#formulario")[0]);
 
       $.ajax({
-        url: "../ajax/usuario.php?op=guardaryeditar",
+        url: "/api/usuario.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -261,7 +261,7 @@ if (!isset($_SESSION["nombre"])) {
     }
 
     function mostrar(idusuario) {
-      $.post("../ajax/usuario.php?op=mostrar", { idusuario: idusuario }, function (data, status) {
+      $.post("/api/usuario.php?op=mostrar", { idusuario: idusuario }, function (data, status) {
         data = JSON.parse(data);
         mostrarform(true);
 
@@ -281,7 +281,7 @@ if (!isset($_SESSION["nombre"])) {
         $("#idusuario").val(data.idusuario);
 
       });
-      $.post("../ajax/usuario.php?op=permisos&id=" + idusuario, function (r) {
+      $.post("/api/usuario.php?op=permisos&id=" + idusuario, function (r) {
         $("#permisos").html(r);
       });
     }
@@ -290,7 +290,7 @@ if (!isset($_SESSION["nombre"])) {
     function desactivar(idusuario) {
       bootbox.confirm("¿Está Seguro de desactivar el usuario?", function (result) {
         if (result) {
-          $.post("../ajax/usuario.php?op=desactivar", { idusuario: idusuario }, function (e) {
+          $.post("/api/usuario.php?op=desactivar", { idusuario: idusuario }, function (e) {
             bootbox.alert(e);
             tabla.ajax.reload();
           });
@@ -302,7 +302,7 @@ if (!isset($_SESSION["nombre"])) {
     function activar(idusuario) {
       bootbox.confirm("¿Está Seguro de activar el Usuario?", function (result) {
         if (result) {
-          $.post("../ajax/usuario.php?op=activar", { idusuario: idusuario }, function (e) {
+          $.post("/api/usuario.php?op=activar", { idusuario: idusuario }, function (e) {
             bootbox.alert(e);
             tabla.ajax.reload();
           });

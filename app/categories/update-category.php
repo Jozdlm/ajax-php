@@ -70,7 +70,7 @@ if (!isset($_SESSION["nombre"])) {
         })
 
         function mostrar(idcategoria) {
-            $.post("../ajax/categoria.php?op=mostrar", { idcategoria: idcategoria }, function (data, status) {
+            $.post("/api/categoria.php?op=mostrar", { idcategoria: idcategoria }, function (data, status) {
                 data = JSON.parse(data);
                 $("#nombre").val(data.nombre);
                 $("#descripcion").val(data.descripcion);
@@ -84,7 +84,7 @@ if (!isset($_SESSION["nombre"])) {
             var formData = new FormData($("#formulario")[0]);
 
             $.ajax({
-                url: "/ajax/categoria.php?op=guardaryeditar",
+                url: "/api/categoria.php?op=guardaryeditar",
                 type: "POST",
                 data: formData,
                 contentType: false,

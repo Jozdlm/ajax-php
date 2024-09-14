@@ -197,7 +197,7 @@ if (!isset($_SESSION["nombre"])) {
         guardaryeditar(e);
       });
       //Cargamos los items al select proveedor
-      $.post("../ajax/ingreso.php?op=selectProveedor", function (r) {
+      $.post("/api/ingreso.php?op=selectProveedor", function (r) {
         $("#idproveedor").html(r);
         $('#idproveedor').selectpicker('refresh');
       });
@@ -274,7 +274,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '../ajax/ingreso.php?op=listar',
+            url: '/api/ingreso.php?op=listar',
             type: "get",
             dataType: "json",
             error: function (e) {
@@ -310,7 +310,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '../ajax/ingreso.php?op=listarArticulos',
+            url: '/api/ingreso.php?op=listarArticulos',
             type: "get",
             dataType: "json",
             error: function (e) {
@@ -330,7 +330,7 @@ if (!isset($_SESSION["nombre"])) {
       var formData = new FormData($("#formulario")[0]);
 
       $.ajax({
-        url: "../ajax/ingreso.php?op=guardaryeditar",
+        url: "/api/ingreso.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -347,7 +347,7 @@ if (!isset($_SESSION["nombre"])) {
     }
 
     function mostrar(idingreso) {
-      $.post("../ajax/ingreso.php?op=mostrar", { idingreso: idingreso }, function (data, status) {
+      $.post("/api/ingreso.php?op=mostrar", { idingreso: idingreso }, function (data, status) {
         data = JSON.parse(data);
         mostrarform(true);
 
@@ -367,7 +367,7 @@ if (!isset($_SESSION["nombre"])) {
         $("#btnAgregarArt").hide();
       });
 
-      $.post("../ajax/ingreso.php?op=listarDetalle&id=" + idingreso, function (r) {
+      $.post("/api/ingreso.php?op=listarDetalle&id=" + idingreso, function (r) {
         $("#detalles").html(r);
       });
     }
@@ -376,7 +376,7 @@ if (!isset($_SESSION["nombre"])) {
     function anular(idingreso) {
       bootbox.confirm("¿Está Seguro de anular el ingreso?", function (result) {
         if (result) {
-          $.post("../ajax/ingreso.php?op=anular", { idingreso: idingreso }, function (e) {
+          $.post("/api/ingreso.php?op=anular", { idingreso: idingreso }, function (e) {
             bootbox.alert(e);
             tabla.ajax.reload();
           });

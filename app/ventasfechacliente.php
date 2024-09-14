@@ -91,7 +91,7 @@ if (!isset($_SESSION["nombre"])) {
     function init() {
       listar();
       //Cargamos los items al select cliente
-      $.post("/ajax/venta.php?op=selectCliente", function (r) {
+      $.post("/api/venta.php?op=selectCliente", function (r) {
         $("#idcliente").html(r);
         $('#idcliente').selectpicker('refresh');
       });
@@ -120,7 +120,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '/ajax/consultas.php?op=ventasfechacliente',
+            url: '/api/consultas.php?op=ventasfechacliente',
             data: { fecha_inicio: fecha_inicio, fecha_fin: fecha_fin, idcliente: idcliente },
             type: "get",
             dataType: "json",

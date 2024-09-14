@@ -70,7 +70,7 @@ if (!isset($_SESSION["nombre"])) {
             var formData = new FormData($("#formulario")[0]);
 
             $.ajax({
-                url: "/ajax/categoria.php?op=guardaryeditar",
+                url: "/api/categoria.php?op=guardaryeditar",
                 type: "POST",
                 data: formData,
                 contentType: false,

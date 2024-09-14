@@ -94,7 +94,7 @@ if (!isset($_SESSION["nombre"])) {
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             //Cargamos los items al select categoria
-            $.post("/ajax/articulo.php?op=selectCategoria", function (r) {
+            $.post("/api/articulo.php?op=selectCategoria", function (r) {
                 $("#idcategoria").html(r);
                 $('#idcategoria').selectpicker('refresh');
             });
@@ -112,7 +112,7 @@ if (!isset($_SESSION["nombre"])) {
             var formData = new FormData($("#formulario")[0]);
 
             $.ajax({
-                url: "/ajax/articulo.php?op=guardaryeditar",
+                url: "/api/articulo.php?op=guardaryeditar",
                 type: "POST",
                 data: formData,
                 contentType: false,
@@ -137,7 +137,7 @@ if (!isset($_SESSION["nombre"])) {
         }
 
         function mostrar(idarticulo) {
-            $.post("/ajax/articulo.php?op=mostrar", { idarticulo: idarticulo }, function (data, status) {
+            $.post("/api/articulo.php?op=mostrar", { idarticulo: idarticulo }, function (data, status) {
                 data = JSON.parse(data);
 
                 $("#idcategoria").val(data.idcategoria);

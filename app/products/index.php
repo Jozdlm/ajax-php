@@ -93,7 +93,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '/ajax/articulo.php?op=listar',
+            url: '/api/articulo.php?op=listar',
             type: "get",
             dataType: "json",
             error: function (e) {
@@ -120,7 +120,7 @@ if (!isset($_SESSION["nombre"])) {
     function desactivar(idarticulo) {
       bootbox.confirm("¿Está Seguro de desactivar el artículo?", function (result) {
         if (result) {
-          $.post("/ajax/articulo.php?op=desactivar", { idarticulo: idarticulo }, function (e) {
+          $.post("/api/articulo.php?op=desactivar", { idarticulo: idarticulo }, function (e) {
             bootbox.alert(e);
             tabla.ajax.reload();
           });
@@ -132,7 +132,7 @@ if (!isset($_SESSION["nombre"])) {
     function activar(idarticulo) {
       bootbox.confirm("¿Está Seguro de activar el Artículo?", function (result) {
         if (result) {
-          $.post("/ajax/articulo.php?op=activar", { idarticulo: idarticulo }, function (e) {
+          $.post("/api/articulo.php?op=activar", { idarticulo: idarticulo }, function (e) {
             bootbox.alert(e);
             tabla.ajax.reload();
           });

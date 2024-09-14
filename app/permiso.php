@@ -75,7 +75,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '/ajax/permiso.php?op=listar',
+            url: '/api/permiso.php?op=listar',
             type: "get",
             dataType: "json",
             error: function (e) {

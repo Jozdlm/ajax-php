@@ -87,7 +87,7 @@ if (!isset($_SESSION["nombre"])) {
                     ],
                     "ajax":
                     {
-                        url: '../ajax/categoria.php?op=listar',
+                        url: '/api/categoria.php?op=listar',
                         type: "get",
                         dataType: "json",
                         error: function (e) {
@@ -114,7 +114,7 @@ if (!isset($_SESSION["nombre"])) {
         function desactivar(idcategoria) {
             bootbox.confirm("¿Está Seguro de desactivar la Categoría?", function (result) {
                 if (result) {
-                    $.post("../ajax/categoria.php?op=desactivar", { idcategoria: idcategoria }, function (e) {
+                    $.post("/api/categoria.php?op=desactivar", { idcategoria: idcategoria }, function (e) {
                         bootbox.alert(e);
                         tabla.ajax.reload();
                     });
@@ -126,7 +126,7 @@ if (!isset($_SESSION["nombre"])) {
         function activar(idcategoria) {
             bootbox.confirm("¿Está Seguro de activar la Categoría?", function (result) {
                 if (result) {
-                    $.post("../ajax/categoria.php?op=activar", { idcategoria: idcategoria }, function (e) {
+                    $.post("/api/categoria.php?op=activar", { idcategoria: idcategoria }, function (e) {
                         bootbox.alert(e);
                         tabla.ajax.reload();
                     });

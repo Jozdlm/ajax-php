@@ -171,7 +171,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '../ajax/persona.php?op=listarc',
+            url: '/api/persona.php?op=listarc',
             type: "get",
             dataType: "json",
             error: function (e) {
@@ -201,7 +201,7 @@ if (!isset($_SESSION["nombre"])) {
       var formData = new FormData($("#formulario")[0]);
 
       $.ajax({
-        url: "../ajax/persona.php?op=guardaryeditar",
+        url: "/api/persona.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -218,7 +218,7 @@ if (!isset($_SESSION["nombre"])) {
     }
 
     function mostrar(idpersona) {
-      $.post("../ajax/persona.php?op=mostrar", { idpersona: idpersona }, function (data, status) {
+      $.post("/api/persona.php?op=mostrar", { idpersona: idpersona }, function (data, status) {
         data = JSON.parse(data);
         mostrarform(true);
 
@@ -239,7 +239,7 @@ if (!isset($_SESSION["nombre"])) {
     function eliminar(idpersona) {
       bootbox.confirm("¿Está Seguro de eliminar el cliente?", function (result) {
         if (result) {
-          $.post("../ajax/persona.php?op=eliminar", { idpersona: idpersona }, function (e) {
+          $.post("/api/persona.php?op=eliminar", { idpersona: idpersona }, function (e) {
             bootbox.alert(e);
             tabla.ajax.reload();
           });

@@ -199,7 +199,7 @@ if (!isset($_SESSION["nombre"])) {
         guardaryeditar(e);
       });
       //Cargamos los items al select cliente
-      $.post("../ajax/venta.php?op=selectCliente", function (r) {
+      $.post("/api/venta.php?op=selectCliente", function (r) {
         $("#idcliente").html(r);
         $('#idcliente').selectpicker('refresh');
       });
@@ -275,7 +275,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '../ajax/venta.php?op=listar',
+            url: '/api/venta.php?op=listar',
             type: "get",
             dataType: "json",
             error: function (e) {
@@ -311,7 +311,7 @@ if (!isset($_SESSION["nombre"])) {
           ],
           "ajax":
           {
-            url: '../ajax/venta.php?op=listarArticulosVenta',
+            url: '/api/venta.php?op=listarArticulosVenta',
             type: "get",
             dataType: "json",
             error: function (e) {
@@ -331,7 +331,7 @@ if (!isset($_SESSION["nombre"])) {
       var formData = new FormData($("#formulario")[0]);
 
       $.ajax({
-        url: "../ajax/venta.php?op=guardaryeditar",
+        url: "/api/venta.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -348,7 +348,7 @@ if (!isset($_SESSION["nombre"])) {
     }
 
     function mostrar(idventa) {
-      $.post("../ajax/venta.php?op=mostrar", { idventa: idventa }, function (data, status) {
+      $.post("/api/venta.php?op=mostrar", { idventa: idventa }, function (data, status) {
         data = JSON.parse(data);
         mostrarform(true);
 
@@ -368,7 +368,7 @@ if (!isset($_SESSION["nombre"])) {
         $("#btnAgregarArt").hide();
       });
 
-      $.post("../ajax/venta.php?op=listarDetalle&id=" + idventa, function (r) {
+      $.post("/api/venta.php?op=listarDetalle&id=" + idventa, function (r) {
         $("#detalles").html(r);
       });
     }
@@ -377,7 +377,7 @@ if (!isset($_SESSION["nombre"])) {
     function anular(idventa) {
       bootbox.confirm("¿Está Seguro de anular la venta?", function (result) {
         if (result) {
-          $.post("../ajax/venta.php?op=anular", { idventa: idventa }, function (e) {
+          $.post("/api/venta.php?op=anular", { idventa: idventa }, function (e) {
             bootbox.alert(e);
             tabla.ajax.reload();
           });

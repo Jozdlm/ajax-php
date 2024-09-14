@@ -9,7 +9,7 @@ if (!isset($_SESSION["nombre"])) {
     require_once $_SERVER['DOCUMENT_ROOT'] . '/vistas/header.php';
 
     if ($_SESSION['escritorio'] == 1) {
-        require_once $_SERVER['DOCUMENT_ROOT'] . "/modelos/Consultas.php";
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/api/modelos/Consultas.php";
         $consulta = new Consultas();
         $rsptac = $consulta->totalcomprahoy();
         $regc = $rsptac->fetch_object();

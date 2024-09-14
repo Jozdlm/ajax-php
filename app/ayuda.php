@@ -6,7 +6,7 @@ session_start();
 if (!isset($_SESSION["nombre"])) {
   header("Location: vistas/login.html");
 } else {
-  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/header.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/app/header.php';
   ?>
   <!--Contenido-->
   <!-- Content Wrapper. Contains page content -->
@@ -47,7 +47,7 @@ if (!isset($_SESSION["nombre"])) {
   </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
   <?php
-  require $_SERVER['DOCUMENT_ROOT'] . '/vistas/footer.php';
+  require $_SERVER['DOCUMENT_ROOT'] . '/app/footer.php';
 ?>
 <?php
 }

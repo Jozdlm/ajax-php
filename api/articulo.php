@@ -100,7 +100,7 @@ if (!isset($_SESSION["nombre"])) {
 		}
 		//Fin de las validaciones de acceso
 	} else {
-		require $_SERVER['DOCUMENT_ROOT'] . '/vistas/noacceso.php';
+		require $_SERVER['DOCUMENT_ROOT'] . '/app/noacceso.php';
 	}
 }
 ob_end_flush();

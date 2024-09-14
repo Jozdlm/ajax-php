@@ -6,7 +6,7 @@ session_start();
 if (!isset($_SESSION["nombre"])) {
     header("Location: vistas/login.html");
 } else {
-    require $_SERVER['DOCUMENT_ROOT'] . '/vistas/header.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/app/header.php';
 
     if ($_SESSION['almacen'] == 1) {
         ?>
@@ -53,10 +53,10 @@ if (!isset($_SESSION["nombre"])) {
         <!--Fin-Contenido-->
         <?php
     } else {
-        require $_SERVER['DOCUMENT_ROOT'] . '/vistas/noacceso.php';
+        require $_SERVER['DOCUMENT_ROOT'] . '/app/noacceso.php';
     }
 
-    require $_SERVER['DOCUMENT_ROOT'] . '/vistas/footer.php';
+    require $_SERVER['DOCUMENT_ROOT'] . '/app/footer.php';
     ?>
     <script>
         document.addEventListener('DOMContentLoaded', () => {

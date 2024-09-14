@@ -21,7 +21,7 @@ if (!isset($_SESSION["nombre"])) {
                             <div class="box-header with-border">
                                 <h1 class="box-title">Categoría </h1>
                                 <div class="box-tools pull-right">
-                                    <a href="../reportes/rptcategorias.php" target="_blank" class="btn btn-info">
+                                    <a href="/app/reportes//rptcategorias.php" target="_blank" class="btn btn-info">
                                         <i class="fa fa-clipboard"></i> Reporte</a>
                                     <a class="btn btn-success" id="btnagregar" href="app/categories/add-category.php"><i
                                             class="fa fa-plus-circle"></i> Agregar</a>

@@ -88,7 +88,7 @@ switch ($_GET["op"]){
  				"0"=>(($reg->estado=='Aceptado')?'<button class="btn btn-warning" onclick="mostrar('.$reg->idingreso.')"><i class="fa fa-eye"></i></button>'.
  					' <button class="btn btn-danger" onclick="anular('.$reg->idingreso.')"><i class="fa fa-close"></i></button>':
  					'<button class="btn btn-warning" onclick="mostrar('.$reg->idingreso.')"><i class="fa fa-eye"></i></button>').
- 					'<a target="_blank" href="../reportes/exIngreso.php?id='.$reg->idingreso.'"> <button class="btn btn-info"><i class="fa fa-file"></i></button></a>',
+ 					'<a target="_blank" href="/app/reportes//exIngreso.php?id='.$reg->idingreso.'"> <button class="btn btn-info"><i class="fa fa-file"></i></button></a>',
  				"1"=>$reg->fecha,
  				"2"=>$reg->proveedor,
  				"3"=>$reg->usuario,

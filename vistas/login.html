@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>ADVentas | www.incanatoit.com</title>
+    <title>Login - Small Business Manager</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
@@ -29,11 +29,11 @@
   <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="../../index2.html"><b>ADVentas</b></a>
+        <a href="#"><b>Small Business Manager</b></a>
       </div>
       <!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Ingrese sus datos de Acceso</p>
+        <p class="login-box-msg">Iniciar Sesión</p>
         <form method="post" id="frmAcceso">
           <div class="form-group has-feedback">
             <input
@@ -51,7 +51,7 @@
               id="clavea"
               name="clavea"
               class="form-control"
-              placeholder="Password"
+              placeholder="Contraseña"
             />
             <span class="fa fa-key form-control-feedback"></span>
           </div>
@@ -86,11 +86,11 @@
         clavea = $("#clavea").val();
 
         $.post(
-          "../ajax/usuario.php?op=verificar",
+          "/ajax/usuario.php?op=verificar",
           { logina: logina, clavea: clavea },
           function (data) {
             if (data != "null") {
-              $(location).attr("href", "app/");
+              $(location).attr("href", "/app/");
             } else {
               bootbox.alert("Usuario y/o Password incorrectos");
             }

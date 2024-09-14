@@ -95,19 +95,16 @@ if (strlen(session_id()) < 1)
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
           <li class="header"></li>
-          <?php
-          if ($_SESSION['escritorio'] == 1) {
-            echo '<li id="mEscritorio">
+          <?php if ($_SESSION['escritorio'] == 1): ?>
+            <li id="mEscritorio">
               <a href="app/">
                 <i class="fa fa-tasks"></i> <span>Escritorio</span>
               </a>
-            </li>';
-          }
-          ?>
+            </li>
+          <?php endif; ?>
 
-          <?php
-          if ($_SESSION['almacen'] == 1) {
-            echo '<li id="mAlmacen" class="treeview">
+          <?php if ($_SESSION['almacen'] == 1): ?>
+            <li id="mAlmacen" class="treeview">
               <a href="#">
                 <i class="fa fa-laptop"></i>
                 <span>Almacén</span>
@@ -117,57 +114,50 @@ if (strlen(session_id()) < 1)
                 <li id="lArticulos"><a href="app/products/"><i class="fa fa-circle-o"></i> Artículos</a></li>
                 <li id="lCategorias"><a href="app/categories/"><i class="fa fa-circle-o"></i> Categorías</a></li>
               </ul>
-            </li>';
-          }
-          ?>
+            </li>
+          <?php endif; ?>
 
-          <?php
-          if ($_SESSION['compras'] == 1) {
-            echo '<li id="mCompras" class="treeview">
+          <?php if ($_SESSION['compras'] == 1): ?>
+            <li id="mCompras" class="treeview">
               <a href="#">
                 <i class="fa fa-th"></i>
                 <span>Compras</span>
-                 <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li id="lIngresos"><a href="ingreso.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-                <li id="lProveedores"><a href="proveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+                <li id="lIngresos"><a href="app/purchases/"><i class="fa fa-circle-o"></i> Ingresos</a></li>
+                <li id="lProveedores"><a href="app/suppliers/"><i class="fa fa-circle-o"></i> Proveedores</a></li>
               </ul>
-            </li>';
-          }
-          ?>
+            </li>
+          <?php endif; ?>
 
-          <?php
-          if ($_SESSION['ventas'] == 1) {
-            echo '<li id="mVentas" class="treeview">
+          <?php if ($_SESSION['ventas'] == 1): ?>
+            <li id="mVentas" class="treeview">
               <a href="#">
                 <i class="fa fa-shopping-cart"></i>
                 <span>Ventas</span>
-                 <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li id="lVentas"><a href="venta.php"><i class="fa fa-circle-o"></i> Ventas</a></li>
-                <li id="lClientes"><a href="cliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                <li id="lVentas"><a href="app/sales/"><i class="fa fa-circle-o"></i> Ventas</a></li>
+                <li id="lClientes"><a href="app/customers/"><i class="fa fa-circle-o"></i> Clientes</a></li>
               </ul>
-            </li>';
-          }
-          ?>
+            </li>
+          <?php endif; ?>
 
-          <?php
-          if ($_SESSION['acceso'] == 1) {
-            echo '<li id="mAcceso" class="treeview">
+          <?php if ($_SESSION['acceso'] == 1): ?>
+            <li id="mAcceso" class="treeview">
               <a href="#">
                 <i class="fa fa-folder"></i> <span>Acceso</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li id="lUsuarios"><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                <li id="lUsuarios"><a href="app/users/"><i class="fa fa-circle-o"></i> Usuarios</a></li>
                 <li id="lPermisos"><a href="app/permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
-                
+
               </ul>
-            </li>';
-          }
-          ?>
+            </li>
+          <?php endif; ?>
 
           <?php if ($_SESSION['consultac'] == 1 && $_SESSION['consultav'] == 1): ?>
             <li id="mConsultas" class="treeview">

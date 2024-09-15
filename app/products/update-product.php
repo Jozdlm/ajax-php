@@ -8,7 +8,7 @@ if (!isset($_GET['id'])) {
 }
 
 if (!isset($_SESSION["nombre"])) {
-    header("Location: vistas/login.html");
+    header("Location: /login.php");
 } else {
     require $_SERVER['DOCUMENT_ROOT'] . '/app/header.php';
     if ($_SESSION['almacen'] == 1) {

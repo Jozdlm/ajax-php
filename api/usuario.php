@@ -23,7 +23,7 @@ switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (!isset($_SESSION["nombre"]))
 		{
-		  header("Location: ../vistas/login.html");//Validamos el acceso solo a los usuarios logueados al sistema.
+		  header("Location: /login.php");//Validamos el acceso solo a los usuarios logueados al sistema.
 		}
 		else
 		{
@@ -66,7 +66,7 @@ switch ($_GET["op"]){
 	case 'desactivar':
 		if (!isset($_SESSION["nombre"]))
 		{
-		  header("Location: ../vistas/login.html");//Validamos el acceso solo a los usuarios logueados al sistema.
+		  header("Location: /login.php");//Validamos el acceso solo a los usuarios logueados al sistema.
 		}
 		else
 		{
@@ -87,7 +87,7 @@ switch ($_GET["op"]){
 	case 'activar':
 		if (!isset($_SESSION["nombre"]))
 		{
-		  header("Location: ../vistas/login.html");//Validamos el acceso solo a los usuarios logueados al sistema.
+		  header("Location: /login.php");//Validamos el acceso solo a los usuarios logueados al sistema.
 		}
 		else
 		{
@@ -108,7 +108,7 @@ switch ($_GET["op"]){
 	case 'mostrar':
 		if (!isset($_SESSION["nombre"]))
 		{
-		  header("Location: ../vistas/login.html");//Validamos el acceso solo a los usuarios logueados al sistema.
+		  header("Location: /login.php");//Validamos el acceso solo a los usuarios logueados al sistema.
 		}
 		else
 		{
@@ -130,7 +130,7 @@ switch ($_GET["op"]){
 	case 'listar':
 		if (!isset($_SESSION["nombre"]))
 		{
-		  header("Location: ../vistas/login.html");//Validamos el acceso solo a los usuarios logueados al sistema.
+		  header("Location: /login.php");//Validamos el acceso solo a los usuarios logueados al sistema.
 		}
 		else
 		{

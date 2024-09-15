@@ -5,7 +5,7 @@ if (strlen(session_id()) < 1){
 } 
 if (!isset($_SESSION["nombre"]))
 {
-  header("Location: ../vistas/login.html");//Validamos el acceso solo a los usuarios logueados al sistema.
+  header("Location: /login.php");//Validamos el acceso solo a los usuarios logueados al sistema.
 }
 else
 {
